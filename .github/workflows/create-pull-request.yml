@@ -2,7 +2,7 @@ name: Create Pull Request
 
 on:
   schedule:
-    - cron: '40 9 * * *' # Runs every day at midnight
+    - cron: '00 12 * * *' # Runs every day at midnight
   push:
     branches:
       - main
