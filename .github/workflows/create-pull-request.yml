@@ -1,0 +1,35 @@
+name: Create Pull Request
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          repository: Habegger-IT/8_382.BKJfios485_.JKDlffi4958
+          token: ${{ secrets.HABEGGER_TOKEN }}
+
+      - name: Add upstream repository
+        run: git remote add upstream https://github.com/Habegger-IT/8_382.BKJfios485_.JKDlffi4958.git
+
+      - name: Fetch upstream changes
+        run: git fetch upstream
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.HABEGGER_TOKEN }}
+          upstream-repository: ORIGINAL-USERNAME/ORIGINAL-REPO
+          branch: main
+          title: 'Automated Sync'
+          body: 'This pull request was automatically generated to sync changes from the forked repository to the main repository.'
