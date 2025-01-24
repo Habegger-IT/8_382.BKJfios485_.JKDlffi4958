@@ -2,7 +2,7 @@ name: Create Pull Request
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs every day at midnight
+    - cron: '40 9 * * *' # Runs every day at midnight
   push:
     branches:
       - main
@@ -29,7 +29,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.HABEGGER_TOKEN }}
-          upstream-repository: ORIGINAL-USERNAME/ORIGINAL-REPO
+          upstream-repository: Habegger-IT/8_382.BKJfios485_.JKDlffi4958
           branch: main
           title: 'Automated Sync'
           body: 'This pull request was automatically generated to sync changes from the forked repository to the main repository.'
